@@ -1,13 +1,7 @@
-import { LeftSidebar } from "@/components/ui/LeftSidebar";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Podcastr",
-  description: "Generate your podcasts using AI",
-  icons:{
-    icon:'/icons/logo.svg'
-  }
-};
+import { RightSidebar } from "@/components/RightSidebar";
+import { LeftSidebar } from "@/components/LeftSidebar";
+import { MobileNav } from "@/components/MobileNav";
+import Image from "next/image";
 
 export default function RootLayout({
   children,
@@ -16,10 +10,28 @@ export default function RootLayout({
 }>) {
   return (
     <div className="relative flex flex-col">
-      <main className="relative">
+      <main className="relative flex bg-black-3">
         <LeftSidebar />
-        {children}
-        <p className="text-white-1">RIGHT</p>
+
+        <section className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
+          <div className="mx-auto flex w-full max-w-5xl flex-col max-sm:px-4">
+            <div className="flex h-16 items-center justify-between md:hidden">
+              <Image
+                src="/icons/logo.svg"
+                width={30}
+                height={30}
+                alt="menu icon"
+              />
+              <MobileNav />
+            </div>
+            <div className="flex flex-col md:pb-14">
+              das
+              {children}
+            </div>
+          </div>
+        </section>
+
+        <RightSidebar />
       </main>
     </div>
   );
