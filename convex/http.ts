@@ -23,6 +23,7 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
         name: event.data.first_name!,
       });
       break;
+      
     case "user.updated":
       await ctx.runMutation(internal.users.updateUser, {
         clerkId: event.data.id,
